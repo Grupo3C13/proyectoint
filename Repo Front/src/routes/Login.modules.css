@@ -1,0 +1,9 @@
+
+  .loginForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0 ,0.2);
+    
+  }

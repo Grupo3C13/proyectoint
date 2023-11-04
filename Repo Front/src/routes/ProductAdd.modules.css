@@ -1,0 +1,21 @@
+.formulario {
+  /* height: 100vh; */
+}
+.product-form {
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  
+}
+label {
+  padding: 5px;
+}
+.btn-form {
+  background-color: #623cea;
+  color: #ebebeb;
+  margin: 20px;
+}
+.btn-form:hover {
+  background-color: #ebebeb;
+  color: #623cea;
+}
