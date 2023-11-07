@@ -86,7 +86,10 @@ export function Registro() {
           <Form.Text className="text-muted">
             No compartiremos tus datos con nadie.
           </Form.Text>
-          <Form.Text className="alert alert-danger p-1">{errors.name}</Form.Text>
+          <Form.Text className={`alert alert-danger p-1 ${errors.name ? 'd-block' : 'd-none'}`}>
+  {errors.name}
+</Form.Text>
+
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -101,7 +104,10 @@ export function Registro() {
           <Form.Text className="text-muted">
             No compartiremos tu mail con nadie.
           </Form.Text>
-          <Form.Text className="alert alert-danger p-1">{errors.email}</Form.Text>
+          <Form.Text className={`alert alert-danger p-1 ${errors.email ? 'd-block' : 'd-none'}`}>
+            {errors.email}
+          </Form.Text>
+
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -113,7 +119,10 @@ export function Registro() {
             value={password}
             onChange={handleChange}
           />
-          <Form.Text className="alert alert-danger p-1">{errors.password}</Form.Text>
+          <Form.Text className={`alert alert-danger p-1 ${errors.password ? 'd-block' : 'd-none'}`}>
+            {errors.password}
+          </Form.Text>
+
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formRepeatBasicPassword">
@@ -125,7 +134,10 @@ export function Registro() {
             value={repeatPassword}
             onChange={handleChange}
           />
-          <Form.Text className="alert alert-danger p-1">{errors.repeatPassword}</Form.Text>
+          <Form.Text className={`alert alert-danger p-1 ${errors.repeatPassword ? 'd-block' : 'd-none'}`}>
+  {errors.repeatPassword}
+</Form.Text>
+
         </Form.Group>
 
         <Button variant="primary" type="submit">

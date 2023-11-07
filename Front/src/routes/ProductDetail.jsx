@@ -7,6 +7,10 @@ import "../routes/ProductDetail.modules.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Gallery } from "../components/Gallery";
+import ico_marca from "../images/flag-solid.svg";
+import ico_modelo from "../images/asterisk-solid.svg";
+import ico_electrico from "../images/bolt-solid.svg";
+import ico_protector from "../images/gift-solid.svg";
 
 
 export function ProductDetail() {
@@ -44,7 +48,31 @@ export function ProductDetail() {
       >
         {/* <Gallery img_src={detalle.img} /> */}
         </ProductBody>
-      
+        <div>
+        <h4>Características</h4>
+        <div className="caracteristicas">
+          <div className="celda">
+            <img className="iconos" src={ico_marca} alt="" />
+            <p>Marca: </p>
+            <p> {detalle.marca}</p>
+          </div>
+          <div className="celda">
+            <img className="iconos" src={ico_modelo} alt="" />
+            <p>Modelo: </p>
+            <p> {detalle.modelo}</p>
+          </div>
+          <div className="celda">
+            <img className="iconos" src={ico_electrico} alt="" />
+            <p>Está en stock: </p>
+            <p> {detalle.stock}</p>
+          </div>
+          {/* <div className="celda">
+            <img src={ico_protector} alt="" />
+            <p>Tiene protector: </p>
+            <p> {detalle.protector}</p>
+          </div> */}
+        </div>
+      </div>
       
     </div>
   );
