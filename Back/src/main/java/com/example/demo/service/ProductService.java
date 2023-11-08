@@ -4,10 +4,10 @@ import com.example.demo.dto.ProductDTO;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Image;
 import com.example.demo.entity.Product;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ImageRepository;
 import com.example.demo.repository.ProductRepository;
-import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -80,7 +80,7 @@ public class ProductService {
      public void deleteProduct(Long id){
         productRepository.deleteById(id);
      }
-    public ProductDTO updateProduct(Long productId, Product updatedProductDTO) {
+    public ProductDTO updateProduct(Long productId, Product updatedProductDTO) throws ResourceNotFoundException {
         // Busca el producto existente en la base de datos por su ID
         Optional<Product> productOptional = productRepository.findById(productId);
 

@@ -2,10 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.ReservationDTO;
 import com.example.demo.entity.Reservation;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.service.ProductService;
 import com.example.demo.service.ReservationService;
 import com.example.demo.service.UserService;
-import org.apache.velocity.exception.ResourceNotFoundException;
 import org.aspectj.apache.bcel.classfile.Module;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +44,7 @@ public class ReservationController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteReservation (@PathVariable Long id) throws ResourceNotFoundException{
+    public ResponseEntity<String> deleteReservation (@PathVariable Long id) throws ResourceNotFoundException {
         Optional<ReservationDTO> reservationFound = reservationService.getReservationById(id);
         if (reservationFound.isPresent()){
             reservationService.deleteReservation(id);
@@ -55,12 +55,8 @@ public class ReservationController {
     }
 
     @PutMapping("/{id}")
-    public  ResponseEntity<ReservationDTO> updateReservation (@PathVariable Long id, @RequestBody Reservation updatedReservation){
-        try {
-            ReservationDTO updatedReservationDTO = reservationService.updateReservation(id, updatedReservation);
-            return ResponseEntity.ok(updatedReservationDTO);
-        }catch (ResourceNotFoundException ex) {
-            return ResponseEntity.notFound().build();
-        }
+    public  ResponseEntity<ReservationDTO> updateReservation (@PathVariable Long id, @RequestBody Reservation updatedReservation) throws ResourceNotFoundException {
+        ReservationDTO updatedReservationDTO = reservationService.updateReservation(id, updatedReservation);
+        return ResponseEntity.ok(updatedReservationDTO);
     }
 }

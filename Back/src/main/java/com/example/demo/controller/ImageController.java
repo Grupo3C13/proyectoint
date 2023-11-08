@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Image;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.service.ImageService;
-import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +37,7 @@ public class ImageController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateImage(@RequestBody Image image) throws ResourceNotFoundException{
+    public ResponseEntity<String> updateImage(@RequestBody Image image) throws ResourceNotFoundException {
         Optional<Image> imagenBuscada = imageService.getImageById(image.getId());
         if (imagenBuscada.isPresent()){
             imageService.updateImage(image);

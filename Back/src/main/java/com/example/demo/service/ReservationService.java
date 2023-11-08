@@ -5,8 +5,8 @@ import com.example.demo.dto.ReservationDTO;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.Reservation;
 import com.example.demo.entity.User;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.ReservationRepository;
-import org.apache.velocity.exception.ResourceNotFoundException;
 import org.aspectj.apache.bcel.classfile.Module;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,7 +71,7 @@ public class ReservationService {
     public void deleteReservation(Long id){
         reservationRepository.deleteById(id);
     }
-    public ReservationDTO updateReservation(Long reservationId, Reservation updatedReservationDTO){
+    public ReservationDTO updateReservation(Long reservationId, Reservation updatedReservationDTO) throws ResourceNotFoundException {
         Optional<Reservation> reservationOptional = reservationRepository.findById(reservationId);
         if (reservationOptional.isPresent()){
             Reservation existingReservation = reservationOptional.get();
